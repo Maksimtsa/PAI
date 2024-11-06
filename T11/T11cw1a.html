@@ -17,10 +17,10 @@
             height: "",
             weight: "",
             greeting() {
-                document.getElementById('output').innerHTML = `Witaj ${this.name} ${this.secondname}`;
+                return `Witaj ${this.name} ${this.secondname}`;
             },
             info() {
-                document.getElementById('output1').innerHTML = `Twój wzorst ${this.height}<br> Twoja waga ${this.weight}`;
+                return `Twój wzorst ${this.height}<br> Twoja waga ${this.weight}`;
             }
         }
         person.name = prompt("Podaj swoje imię:")
@@ -28,8 +28,7 @@
         person.height = prompt("Podaj swoją wysokość:")
         person.weight = prompt("Podaj swoją wage:")
 
-        person.greeting();
-        person.info();
+        document.getElementById('output').innerHTML = person.greeting() + person.info()
     </script>
 </body>
 
