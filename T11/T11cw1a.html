@@ -8,27 +8,28 @@
 </head>
 
 <body>
-    <p id="output"></p>
-    <p id="output1"></p>
+    <p id="out"></p>
     <script>
-        const person = {
-            name: "",
-            secondname: "",
-            height: "",
-            weight: "",
-            greeting() {
-                return `Witaj ${this.name} ${this.secondname}`;
+        const data = {
+            name: '',
+            surname: '',
+            height: '',
+            weight: '',
+
+            greating() {
+                return `Witaj ${this.name} ${this.surname} <br>`;
             },
-            info() {
-                return `Twój wzorst ${this.height}<br> Twoja waga ${this.weight}`;
+            inf() {
+                return `Wzrost: ${this.height} <br> waga: ${this.weight}`;
             }
         }
-        person.name = prompt("Podaj swoje imię:")
-        person.secondname = prompt("Podaj swoje nazwisko:")
-        person.height = prompt("Podaj swoją wysokość:")
-        person.weight = prompt("Podaj swoją wage:")
 
-        document.getElementById('output').innerHTML = person.greeting() + person.info()
+        data.name = prompt("podaj imie: ");
+        data.surname = prompt("podaj nazwisko: ");
+        data.height = prompt("podaj wzrost: ");
+        data.weight = prompt("podaj wagę: ");
+
+        document.getElementById('out').innerHTML = data.greating() + data.inf();
     </script>
 </body>
 
