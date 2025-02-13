@@ -1,55 +1,87 @@
 <!DOCTYPE html>
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ćwiczenie 4</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        .left {
+            text-align: left;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .right {
+            text-align: right;
         }
 
         .highlight {
-            letter-spacing: 2px;
+            color: red;
+            font-family: Arial, sans-serif;
+        }
+
+        .uppercase {
             text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        p {
+            margin: 10px 0;
         }
     </style>
 </head>
 
 <body>
-    <p class="even">Lorem ipsum dolor sit amet. Consectetur adipiscing elit.</p>
-    <p class="odd">Lorem ipsum dolor sit amet. Consectetur adipiscing elit.</p>
-    <p class="even">Lorem ipsum dolor sit amet. Consectetur adipiscing elit.</p>
-    <p class="odd">Lorem ipsum dolor sit amet. Consectetur adipiscing elit.</p>
-    <p class="even">Lorem ipsum dolor sit amet. Consectetur adipiscing elit.</p>
-    <p class="odd">Lorem ipsum dolor sit amet. Consectetur adipiscing elit.</p>
+    <div>
+        <p class="even">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo facilisis erat.</p>
+        <p class="odd">Phasellus enim nibh, pulvinar vitae varius malesuada, finibus eget sem.</p>
+        <p class="even">Etiam fermentum lorem vitae mi eleifend vulputate. Nulla facilisi.</p>
+        <p class="odd">Sed convallis erat sit amet dui sodales, nec tincidunt eros placerat.</p>
+        <p class="even">Curabitur eleifend libero non orci mollis, nec ultricies arcu aliquet.</p>
+        <p class="odd">Suspendisse potenti. Nam interdum nisl vitae erat fringilla venenatis.</p>
+    </div>
 
-    <button onclick="toggleEven()">Toggle Even Formatting</button>
-    <button onclick="toggleOdd()">Toggle Odd Formatting</button>
-    <button onclick="toggleFirstThree()">Toggle First Three Formatting</button>
-    <button onclick="toggleLast()">Toggle Last Paragraph</button>
+    <button onclick="formatEven()">Formatuj parzyste</button>
+    <button onclick="formatOdd()">Formatuj nieparzyste</button>
+    <button onclick="formatThreeFirst()">Formatuj 3 pierwsze</button>
+    <button onclick="formatLast()">Formatuj ostatni</button>
 
     <script>
-        function toggleEven() {
-            document.querySelectorAll('.even').forEach(p => {
+        function formatEven() {
+            const evenParagraphs = document.querySelectorAll('.even');
+            evenParagraphs.forEach(p => {
+                p.classList.toggle('center');
                 p.classList.toggle('highlight');
             });
         }
 
-        function toggleOdd() {
-            document.querySelectorAll('.odd').forEach(p => {
+        function formatOdd() {
+            const oddParagraphs = document.querySelectorAll('.odd');
+            oddParagraphs.forEach(p => {
+                p.classList.toggle('right');
                 p.classList.toggle('highlight');
             });
         }
 
-        function toggleFirstThree() {
-            document.querySelectorAll('p:nth-child(-n+3)').forEach(p => {
-                p.classList.toggle('highlight');
-            });
+        function formatThreeFirst() {
+            const firstParagraphs = document.querySelectorAll('p');
+            for (let i = 0; i < 3; i++) {
+                if (firstParagraphs[i]) {
+                    firstParagraphs[i].classList.toggle('left');
+                    firstParagraphs[i].classList.toggle('highlight');
+                }
+            }
         }
 
-        function toggleLast() {
-            const last = document.querySelector('p:last-of-type');
-            last.classList.toggle('highlight');
+        function formatLast() {
+            const paragraphs = document.querySelectorAll('p');
+            const lastParagraph = paragraphs[paragraphs.length - 1];
+            if (lastParagraph) {
+                lastParagraph.classList.toggle('uppercase');
+            }
         }
     </script>
 </body>
