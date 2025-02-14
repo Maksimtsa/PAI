@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="T16cw2.css">
+</head>
+
+<body>
+    <header>
+        <h1>Lista zadań: </h1>
+        <textarea id="input" rows="1" cols="50" placeholder="Wpisz tekst"></textarea>
+        <button onclick="addContent()" id="add">Dodaj</button>
+        </div>
+    </header>
+    <main>
+        <div id="content">
+            <ul id="tasklist"></ul>
+        </div>
+    </main>
+    <script>
+        function addContent() {
+            const tasklist = document.getElementById('tasklist');
+            const zadanie = document.createElement('li');
+            zadanie.textContent = document.getElementById('input').value || 'Nowe zadanie';
+            tasklist.appendChild(zadanie);
+        }
+    </script>
+</body>
+
+</html>
