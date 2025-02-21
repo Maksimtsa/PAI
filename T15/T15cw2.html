@@ -26,6 +26,10 @@
             border: 5px solid red;
         }
 
+        .img-border1 {
+            border: 5px solid rgb(102, 255, 0);
+        }
+
         button {
             margin-top: 10px;
             padding: 8px 12px;
@@ -45,25 +49,28 @@
 
 <body>
     <div class="container">
-        <img id="emoji" src="1.jpg" alt="" width="150">
+        <img id="emoji" src="1.jpg" alt="Pierwszy obrazek" width="150">
         <br>
-        <button onclick="changeImage()" id="btn1">Kliknij mnie</button>
-        <button onclick="changeText()" id="btn2">Kliknij mnie też</button>
+        <button onclick="change1()" id="btn1">Kliknij mnie</button>
+        <button onclick="change2()" id="btn2">Kliknij mnie też</button>
     </div>
+
     <script>
-        function changeImage() {
+        function change1() {
             let img = document.getElementById("emoji");
             img.src = "2.jpg";
-            img.alt = "3.jpg";
+            img.alt = "Drugi obrazek";
             img.classList.add("img-border");
             document.getElementById("btn1").innerText = "Nie klikaj mnie!";
         }
 
-        function changeText() {
-            let btn2 = document.getElementById("btn2");
-            btn2.innerText = "Ups";
-            btn2.style.backgroundColor = "red";
-            btn2.style.color = "white";
+        function change2() {
+            let img = document.getElementById("emoji");
+            let bt = document.getElementById("btn2");
+            img.src = "3.jpg";
+            img.alt = "Trzeci obrazek";
+            img.classList.add("img-border1");
+            bt.innerText = "Ups";
         }
     </script>
 </body>
