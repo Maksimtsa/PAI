@@ -54,6 +54,9 @@
         #obl {
             width: 60px;
             height: 20px;
+            border: 2px solid;
+            border-color: rgb(90, 90, 90);
+            border-radius: 5%;
         }
 
         #obl:hover {
@@ -79,12 +82,16 @@
     </fieldset>
 
     <script>
+
         const inpt = document.querySelectorAll("input[type='radio']");
         const output = document.getElementById("out");
         const btn = document.querySelector("input[type='button']");
         let valueR;
 
         btn.addEventListener("click", () => {
+            const a = parseFloat(document.querySelector("input[name='numberA']").value);
+            const b = parseFloat(document.querySelector("input[name='numberB']").value);
+
             for (let i = 0; i < inpt.length; i++) {
                 if (inpt[i].checked) {
                     valueR = inpt[i].value
@@ -92,27 +99,28 @@
             }
             if (valueR == "+") {
                 let c = a + b;
-                output.innerText = `Suma liczb ${a} i ${b}: ${c}`;
+                output.textContent = `${a} + ${b} = ${c}`;
             }
             else if (valueR == "-") {
                 let c = a - b;
-                output.innerText = `Różnica liczb ${a} i ${b}: ${c}`;
+                output.textContent = `${a} - ${b} = ${c}`;
             }
             else if (valueR == "*") {
                 let c = a * b;
-                output.innerText = `Iloczyn liczb ${a} i ${b}: ${c}`;
+                output.textContent = `${a} * ${b} = ${c}`;
             }
             else if (valueR == "/") {
                 if (b != 0) {
                     let c = a / b;
-                    output.innerText = `Różnica liczb ${a} i ${b}: ${c}`;
+                    output.textContent = `${a} / ${b} = ${c}`;
                 }
                 else {
-                    output.innerHTML = "Nie można dzielić przez 0";
+                    output.textContent = "Nie można dzielić przez 0";
                 }
             }
 
-        })
+        });
+
     </script>
 </body>
 
