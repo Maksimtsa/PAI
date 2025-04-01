@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #kafl {
+            color: green;
+            font-size: 25px;
+        }
+
+        fieldset {
+            margin: 5px;
+        }
+
+        #btn {
+            margin: 10px;
+            background-color: rgb(115, 185, 115);
+            border: 2px solid;
+            border-color: rgb(7, 104, 20);
+            border-radius: 8%;
+        }
+
+        #btn:hover {
+            background-color: rgb(88, 145, 88);
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset>
+        <form method="get">
+            <legend id="kafl">Kafelkowanie Łazienki</legend>
+            <label>powirzchnia w m^2: <input type="number" name="numberA" value=""
+                    style="height: 13px; width: 60px"></label>
+            <br>
+            <input id="butt" type="radio" value="20x20"><label>Płytki 20 x 20 cm</label>
+            <br>
+            <input id="butt" type="radio" value="25x12"><label>Płytki 25 x 12 cm</label>
+            <br>
+            <input type="button" value="PRZELICZ" id="btn">
+            <p id="out"></p>
+        </form>
+    </fieldset>
+    <script>
+        const btn = document.querySelector("#btn");
+        const output = document.getElementById("out");
+        const choice = document.querySelectorAll("input[type='radio']");
+
+        btn.addEventListener("click", function () {
+            const count = parseFloat(document.querySelector("input[name='numberA']").value);
+
+            for (let i = 0; i < choice.length; i++) {
+                if (choice[i].checked == "Płytki 20 x 20 cm") {
+                    output.textContent = `Koszt kafelkowania: ${count * 70}zł`;
+                }
+                else {
+                    output.textContent = `Koszt kafelkowania: ${count * 80}zł`;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
