@@ -5,61 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        #kafl {
-            color: green;
-            font-size: 25px;
-        }
-
-        fieldset {
-            margin: 5px;
-        }
-
-        #btn {
-            margin: 10px;
-            background-color: rgb(115, 185, 115);
-            border: 2px solid;
-            border-color: rgb(7, 104, 20);
-            border-radius: 8%;
-        }
-
-        #btn:hover {
-            background-color: rgb(88, 145, 88);
-        }
-    </style>
 </head>
 
 <body>
     <fieldset>
-        <form method="get">
-            <legend id="kafl">Kafelkowanie Łazienki</legend>
-            <label>powirzchnia w m^2: <input type="number" name="numberA" value=""
-                    style="height: 13px; width: 60px"></label>
-            <br>
-            <input id="butt" type="radio" value="20x20"><label>Płytki 20 x 20 cm</label>
-            <br>
-            <input id="butt" type="radio" value="25x12"><label>Płytki 25 x 12 cm</label>
-            <br>
-            <input type="button" value="PRZELICZ" id="btn">
+        <legend>Kafelkowanie Łazienki</legend>
+        <label>powierzchnia w m^2<input type="number" name="numberA" value=""></label><br>
+        <label><input type="radio" name="rad" value="20x20"> Płytki 20x20 cm</label><br>
+        <label><input type="radio" name="rad" value="25x12"> Płytki 25x15 cm</label><br>
+        <label><input type="button" name="btn" value="przelicz"></label><br>
+        <label>
             <p id="out"></p>
-        </form>
+        </label>
     </fieldset>
     <script>
-        const btn = document.querySelector("#btn");
-        const output = document.getElementById("out");
-        const choice = document.querySelectorAll("input[type='radio']");
+        const btn = document.querySelector("input[name='btn']");
+        const rad = document.querySelectorAll("input[name='rad']");
+        const output = document.querySelector("#out");
 
         btn.addEventListener("click", function () {
-            const count = parseFloat(document.querySelector("input[name='numberA']").value);
+            let count = parseFloat(document.querySelector("input[name='numberA']").value);
+            for (let i = 0; i < rad.length; i++)
+                if (rad[i].checked) {
+                    const ch = rad[i].value;
 
-            for (let i = 0; i < choice.length; i++) {
-                if (choice[i].checked == "Płytki 20 x 20 cm") {
-                    output.textContent = `Koszt kafelkowania: ${count * 70}zł`;
+                    if (ch == "20x20") {
+                        output.textContent = `Koszt kafelkowania: ${count * 70}zł`;
+                    }
+                    else {
+                        output.textContent = `Koszt kafelkowania: ${count * 80}zł`;
+                    }
                 }
-                else {
-                    output.textContent = `Koszt kafelkowania: ${count * 80}zł`;
-                }
-            }
+
         })
     </script>
 </body>
